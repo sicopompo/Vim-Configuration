@@ -1,5 +1,7 @@
 " Archivo de configuración de vim
 
+"""""""""""""""""""""""""" REGION Opciones """"""""""""""""""""""""""
+
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible " de esta forma ya no es compatible con vim, solo vim improved
@@ -46,7 +48,13 @@ set mouse=a
 " Set the command window height to 2 lines, to avoid many cases of having to
 " "press <Enter> to continue"
 set cmdheight=2
- 
+
+" Set to inset space instead of tabs
+set expandtab
+
+" Set the numbers of space that are inserted by tab
+set tabstop=4
+
 " Display line numbers on the left
 set number
  
@@ -74,3 +82,20 @@ map Y y$
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
+"
+"
+"""""""""""""""""""""""""" ENDREGION Opciones """"""""""""""""""""""""""
+"""""""""""""""""""""""""" REGION Plugins     """"""""""""""""""""""""""
+" Iniciamos el gestor de plugins, la carpeta es Pluggins-Plug
+call plug#begin('~/.vim/Pluggins-Plug')
+Plug 'dracula/vim', { 'as': 'dracula' } " Esquema de colores
+" Y cerramos la declracion de Pluggins
+call plug#end()
+"""""""""""""""""""""""""" ENDREGION Plugins  """"""""""""""""""""""""""
+"""""""""""""""""""""""""" REGION LogicaOpt   """"""""""""""""""""""""""
+" si tiene entorno grafico
+if has('gui_running')
+    colorscheme dracula
+else " si no
+endif
+"""""""""""""""""""""""""" ENDREGION LogicaOp """"""""""""""""""""""""""
