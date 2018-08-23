@@ -55,6 +55,9 @@ set expandtab
 " Set the numbers of space that are inserted by tab
 set tabstop=4
 
+" Set the numbers of space by indentations
+set shiftwidth=4
+
 " Display line numbers on the left
 set number
  
