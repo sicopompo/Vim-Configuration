@@ -1,11 +1,30 @@
 " Archivo de configuración de vim
 
+"""""""""""""""""""""""""" REGION Plugins     """"""""""""""""""""""""""
+
+" Iniciamos el gestor de plugins, la carpeta es Pluggins-Plug
+call plug#begin('~/.vim/Pluggins-Plug')
+Plug 'vim-scripts/indentpython.vim' " fixes para el autoindent
+Plug 'morhetz/gruvbox', {'as': 'gruvbox'} " esquema de colores
+Plug 'chriskempson/base16-vim', { 'as': 'base16'} " esquema de colores
+Plug 'vim-syntastic/syntastic' " Herramienta para comprobar la sintaxis
+"Plug 'hdima/python-syntax' " Sintaxis en python
+Plug 'dracula/vim', { 'as': 'dracula' } " Esquema de colores
+"Plug 'https://github.com/w0rp/ale.git' " Linting en python y mas sitios
+"Plug 'https://github.com/w0rp/ale.git'
+"Plug 'w0rp/ale', { 'as': 'ale' } " Plugin corrector python
+
+" Y cerramos la declracion de Pluggins
+call plug#end()
+
+"""""""""""""""""""""""""" ENDREGION Plugins  """"""""""""""""""""""""""
 """""""""""""""""""""""""" REGION Opciones """"""""""""""""""""""""""
 
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible " de esta forma ya no es compatible con vim, solo vim improved
-" activamos correcion de sintasis
+" activamos correcion de sintasis y funcion de highlight en python
+let python_highlight_all=1 
 syntax on
 
 " activamos para que muestre autocompletar en los comandos
@@ -46,7 +65,7 @@ set t_vb=
 set mouse=a
  
 " Set the command window height to 2 lines, to avoid many cases of having to
-" "press <Enter> to continue"
+"
 set cmdheight=2
 
 " Set to inset space instead of tabs
@@ -57,6 +76,9 @@ set tabstop=4
 
 " Set the numbers of space by indentations
 set shiftwidth=4
+
+" Opcion para que copie la identacion de la linea anterior ESTA ARRIBA 
+"set autoindent
 
 " Display line numbers on the left
 set number
@@ -86,19 +108,17 @@ map Y y$
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 "
-"
+"split navigations para shift+crtl+j mover en el split
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 """""""""""""""""""""""""" ENDREGION Opciones """"""""""""""""""""""""""
-"""""""""""""""""""""""""" REGION Plugins     """"""""""""""""""""""""""
-" Iniciamos el gestor de plugins, la carpeta es Pluggins-Plug
-call plug#begin('~/.vim/Pluggins-Plug')
-Plug 'dracula/vim', { 'as': 'dracula' } " Esquema de colores
-" Y cerramos la declracion de Pluggins
-call plug#end()
-"""""""""""""""""""""""""" ENDREGION Plugins  """"""""""""""""""""""""""
 """""""""""""""""""""""""" REGION LogicaOpt   """"""""""""""""""""""""""
 " si tiene entorno grafico
 if has('gui_running')
     colorscheme dracula
 else " si no
+    colorscheme gruvbox
 endif
 """""""""""""""""""""""""" ENDREGION LogicaOp """"""""""""""""""""""""""
